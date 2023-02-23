@@ -9,3 +9,5 @@ export type Product = {
   categoryId: number;
   rating: number;
 };
+
+export type Filter = null | ((product: Product) => boolean);

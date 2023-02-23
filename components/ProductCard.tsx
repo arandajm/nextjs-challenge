@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { FC } from "react";
 import type { Product } from "../types";
 
 type Props = { product: Product };
 
-const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCard: FC<Props> = ({ product }) => {
   return (
     <div
       style={{
