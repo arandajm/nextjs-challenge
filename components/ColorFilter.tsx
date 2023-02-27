@@ -40,14 +40,16 @@ const ColorFilter: React.FC<Props> = ({ products, onChange }) => {
       <h4>Colors</h4>
       <ul>
         {colors.map((color) => (
-          <li key={color} style={{ display: "flex", gap: "12px" }}>
-            <input
-              onChange={(e) => handleChange(color, e.target.checked)}
-              type="checkbox"
-              name="color"
-              value={color}
-            />
-            <label htmlFor="color">{color}</label>
+          <li key={color} style={{ listStyle: "none" }}>
+            <label htmlFor="color" style={{ display: "flex", gap: "12px" }}>
+              <input
+                onChange={(e) => handleChange(color, e.target.checked)}
+                type="checkbox"
+                name="color"
+                value={color}
+              />
+              {color}
+            </label>
           </li>
         ))}
       </ul>

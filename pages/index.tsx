@@ -45,29 +45,41 @@ const Home: NextPage<Props> = ({ products }) => {
   return (
     <main style={{ display: "flex", gap: "12px" }}>
       <aside>
-        <PriceRangeFilter />
+        <PriceRangeFilter
+          onChange={(filter: Filter) =>
+            setFilters((filters) => ({ ...filters, price: filter }))
+          }
+        />
         <ColorFilter
           onChange={(filter: Filter) =>
             setFilters((filters) => ({ ...filters, color: filter }))
           }
           products={products}
         />
-        <AverageRatingFilter />
+        <AverageRatingFilter
+          onChange={(filter: Filter) =>
+            setFilters((filters) => ({ ...filters, rating: filter }))
+          }
+        />
       </aside>
-      <section
-        style={{
-          flex: "1",
-          display: "grid",
-          gap: "10px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-        }}
-      >
-        {matchedProducts.map((product) => (
-          <article key={product.id}>
-            <ProductCard product={product} />
-          </article>
-        ))}
-      </section>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <h2>{matchedProducts.length} resultados</h2>
+
+        <section
+          style={{
+            flex: "1",
+            display: "grid",
+            gap: "10px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          }}
+        >
+          {matchedProducts.map((product) => (
+            <article key={product.id}>
+              <ProductCard product={product} />
+            </article>
+          ))}
+        </section>
+      </div>
     </main>
   );
 };
